@@ -21,9 +21,25 @@ const getCasas = (req, res) => {
     })
 }
 
+const getSpecificCasa = (req, res) => {
+    const { id } = req.params;
+    Casa.findById(id, req.body, (err, casaModel)=> {
+        if (err) {
+            return res.status(400).send({ message: "Error al obtener la casa" })
+        }
+        if (!casaModel) {
+            return res.status(404).send({ message: "Casa no encontrada" })
+        }
+        return res.status(200).send(casaModel)
+    })
+}
+
+
+
 
 
 module.exports = {
     createCasa,
-    getCasas
+    getCasas,
+    getSpecificCasa
 }
