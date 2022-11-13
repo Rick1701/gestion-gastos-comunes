@@ -8,5 +8,6 @@ api.get('/gastoscomunesModel/search/:id', gastoscomunesController.getSpecificGas
 api.put('/gastoscomunesModel/update/:id', gastoscomunesController.updateGastoComun);
 api.delete('/gastoscomunesModel/delete/:id', gastoscomunesController.deleteGastoComun);
 api.put('/gastoscomunesModel/updateMonto/:id', gastoscomunesController.updateMontoGastoComun);
+api.put('/gastoscomunesModel/pagarDeuda/:id', gastoscomunesController.pagarGastoComun);
 
 module.exports = api;
