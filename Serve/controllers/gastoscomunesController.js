@@ -50,6 +50,21 @@ const updateGastoComun = (req, res) => {
     })
 }
 
+///////////////////////////////////////////////////////////
+const updateMontoGastoComun = (req, res) => {
+    const { id } = req.params;
+    GastosComunes.findByIdAndUpdate
+    (id, { $inc: { monto_gc: req.body.monto_gc } }, (err, gastoscomunesModel) => {
+        if(err){
+            return res.status(400).send({message:"Error al obtener el gasto!!"})
+        }
+        if(!gastoscomunesModel){
+            return res.status(404).send({ message: "Gasto no encontrado!!"})
+        }
+        return res.status(200).send(gastoscomunesModel)
+    })
+}
+
 const deleteGastoComun = (req, res) => {
     const { id } = req.params;
     GastosComunes.findByIdAndDelete(id, (err, gastoscomunesModel) => {
@@ -69,5 +84,6 @@ module.exports = {
     getGastosComunes,
     getSpecificGastoComun,
     updateGastoComun,
-    deleteGastoComun
+    deleteGastoComun,
+    updateMontoGastoComun
 }

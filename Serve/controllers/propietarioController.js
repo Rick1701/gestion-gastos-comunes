@@ -24,9 +24,18 @@ const getPropietarios = (req, res) => {
     })
 }
 
-
+const getPropietarioWithRut = (req, res) => {
+    const rut_propietario = req.params.rut_propietario;
+    Propietario.findOne({ rut_propietario }, (err, propietarioModel) => {
+        if (err) {
+            return res.status(400).send({ message: "Error al obtener el propietario" })
+        }
+        return res.status(200).send(propietarioModel)
+    })
+}
 
 module.exports = {
     createPropietario,
-    getPropietarios
+    getPropietarios,
+    getPropietarioWithRut
 }

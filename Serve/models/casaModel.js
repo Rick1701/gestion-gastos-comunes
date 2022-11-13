@@ -4,6 +4,10 @@ const CasaSchema = new Schema({
     numero_casa: {
         type: Number,
         required: true
+    },
+    id_propietario: {
+        type: Schema.ObjectId,
+        ref: 'propietarioModel'
     }
 });
 
